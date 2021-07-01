@@ -14,7 +14,12 @@ class GameScene: SKScene {
     var player: SKNode?
     var joystick: SKNode?
     var joystickKnod: SKNode?
-    
+    var cameraNode: SKCameraNode?
+    var  mountains1: SKNode?
+    var  mountains2: SKNode?
+    var  mountains3: SKNode?
+    var moon: SKNode?
+    var stars: SKNode?
     // Boolean
     var joystickAction = false
     
@@ -26,6 +31,7 @@ class GameScene: SKScene {
     var playerIsFacingRight = true
     let playerSpeed = 4.0
     
+    
     //Player state
     var playerStateMachine: GKStateMachine!
     
@@ -35,6 +41,13 @@ class GameScene: SKScene {
         player = childNode(withName: "player") // поиск узла по имени
         joystick = childNode(withName: "joystick")
         joystickKnod = joystick?.childNode(withName: "knob") // так как knob находится в джостике перед тем как свезать переменую с узлом необходимо обратиться к джостику
+        cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
+        mountains1 = childNode(withName: "mountains1")
+        mountains2 = childNode(withName: "mountains2")
+        mountains3 = childNode(withName: "mountains3")
+        moon = childNode(withName: "mon")
+        stars = childNode(withName: "stars")
+        
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
             WalkingState(playerNode: player!),
@@ -111,6 +124,10 @@ extension GameScene {
         let deltaTime = currentTime - previousTimeInterval
         previousTimeInterval = currentTime
         
+        // Camera
+        cameraNode?.position.x = player!.position.x
+        joystick?.position.y = ((cameraNode?.position.y)!) - 100
+        joystick?.position.x = ((cameraNode?.position.x)!) - 300
         // Player movement
         guard let joystickKnod = joystickKnod else {return}
         let xPosition = Double(joystickKnod.position.x)
@@ -139,5 +156,23 @@ extension GameScene {
             faceAction = move
         }
         player?.run(faceAction)
+        
+        // Background Parallax
+        
+        let parallax1 = SKAction.moveTo(x: (player?.position.x)!/(-10), duration: 0.0)
+        mountains1?.run(parallax1)
+        
+        let parallax2 = SKAction.moveTo(x: (player?.position.x)!/(-20), duration: 0.0)
+        mountains2?.run(parallax2)
+        
+        let parallax3 = SKAction.moveTo(x: (player?.position.x)!/(-40), duration: 0.0)
+        mountains1?.run(parallax3)
+        
+        let parallax4 = SKAction.moveTo(x: (cameraNode?.position.x)!, duration: 0.0)
+        moon?.run(parallax4)
+        
+        let parallax5 = SKAction.moveTo(x: (cameraNode?.position.x)!, duration: 0.0)
+        stars?.run(parallax5)
+        
     }
 }
