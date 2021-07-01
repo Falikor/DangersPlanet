@@ -15,6 +15,7 @@
 		E56FF3A4268DA64B00FF50F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56FF3A2268DA64B00FF50F9 /* Main.storyboard */; };
 		E56FF3A6268DA64D00FF50F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56FF3A5268DA64D00FF50F9 /* Assets.xcassets */; };
 		E56FF3AF268DC96B00FF50F9 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FF3AE268DC96B00FF50F9 /* PlayerStateMachine.swift */; };
+		E56FF3B5268E037500FF50F9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56FF3B4268E037500FF50F9 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E56FF3A5268DA64D00FF50F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E56FF3A7268DA64D00FF50F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E56FF3AE268DC96B00FF50F9 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
+		E56FF3B4268E037500FF50F9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				E56FF3A5268DA64D00FF50F9 /* Assets.xcassets */,
 				E56FF3A7268DA64D00FF50F9 /* Info.plist */,
 				E56FF3AE268DC96B00FF50F9 /* PlayerStateMachine.swift */,
+				E56FF3B4268E037500FF50F9 /* Launch Screen.storyboard */,
 			);
 			path = DangersPlanet;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 				E56FF3A4268DA64B00FF50F9 /* Main.storyboard in Resources */,
 				E56FF39B268DA64B00FF50F9 /* GameScene.sks in Resources */,
 				E56FF3A6268DA64D00FF50F9 /* Assets.xcassets in Resources */,
+				E56FF3B5268E037500FF50F9 /* Launch Screen.storyboard in Resources */,
 				E56FF39D268DA64B00FF50F9 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
