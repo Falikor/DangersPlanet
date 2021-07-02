@@ -22,15 +22,19 @@ class GameScene: SKScene {
     var stars: SKNode?
     // Boolean
     var joystickAction = false
+    var rewardIsNotTouched = true
     
     // Measure
     var knobRadius: CGFloat = 50.0
+    
+    //Score
+    var scoreLabel = SKLabelNode()
+    var score = 0
     
     // Sprite Engine
     var previousTimeInterval: TimeInterval = 0
     var playerIsFacingRight = true
     let playerSpeed = 4.0
-    
     
     //Player state
     var playerStateMachine: GKStateMachine!
@@ -64,6 +68,14 @@ class GameScene: SKScene {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             self.spawnMeteor()
         }
+        
+        scoreLabel.position = CGPoint(x: (cameraNode?.position.x)! + 310, y: 140)
+        scoreLabel.fontColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        scoreLabel.fontSize = 24
+        scoreLabel.fontName = "AvenirNext-Bold"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.text = String(score)
+        cameraNode?.addChild(scoreLabel)
     }
 }
 
@@ -118,6 +130,7 @@ extension GameScene {
 // MARK: Action
 
 extension GameScene {
+    
     func restKnodPosition() {
         let initialPoint = CGPoint(x: 0, y: 0)
         let moveBack = SKAction.move(to: initialPoint, duration: 0.1)
@@ -125,12 +138,19 @@ extension GameScene {
         joystickKnod?.run(moveBack)
         joystickAction = false
     }
+    
+    func rewardTouch() {
+        score += 1
+        scoreLabel.text = String(score)
+    }
 }
 // MARK: Game Loop
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
         let deltaTime = currentTime - previousTimeInterval
         previousTimeInterval = currentTime
+        
+        rewardIsNotTouched = true
         
         // Camera
         cameraNode?.position.x = player!.position.x
@@ -211,6 +231,21 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if collision.matches(.player, .ground) {
             playerStateMachine.enter(LandingState.self)
+        }
+        
+        if collision.matches(.player, .reward) {
+            if contact.bodyA.node?.name == "jewel" {
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0
+                contact.bodyA.node?.removeFromParent()
+            }
+            else if contact.bodyB.node?.name == "jewel" {
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0
+            }
+            
+            if rewardIsNotTouched {
+                rewardTouch()
+                rewardIsNotTouched = false
+            }
         }
         
         if collision.matches(.ground, .killing) {
