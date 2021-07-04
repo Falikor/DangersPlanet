@@ -96,6 +96,7 @@
 		E56FF397268DA64B00FF50F9 /* DangersPlanet */ = {
 			isa = PBXGroup;
 			children = (
+				E5851C7226907767009CE440 /* audio */,
 				E5851C4B268F4403009CE440 /* Levels */,
 				E56FF39E268DA64B00FF50F9 /* GameScene.swift */,
 				E56FF3AE268DC96B00FF50F9 /* PlayerStateMachine.swift */,
@@ -114,7 +115,6 @@
 		E5851C4B268F4403009CE440 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				E5851C7226907767009CE440 /* audio */,
 				E5851C3E268F3931009CE440 /* Level1.swift */,
 				E56FF39A268DA64B00FF50F9 /* Level1.sks */,
 				E5851C45268F43B4009CE440 /* Level2.swift */,

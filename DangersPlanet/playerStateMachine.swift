@@ -46,7 +46,7 @@ class JumpingState: PlayerState {
         playerNode.removeAction(forKey: characterAnimatioKey)
         playerNode.run(action, withKey: characterAnimatioKey)
         hasFinishedJumping = false
-        playerNode.run(.applyForce(CGVector(dx: 0, dy: 180), duration: 0.1))
+        playerNode.run(.applyForce(CGVector(dx: 0, dy: 250), duration: 0.1))
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
             self.hasFinishedJumping = true
