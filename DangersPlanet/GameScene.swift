@@ -51,10 +51,11 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         
         // Music
-    /*
-        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("music.wav", waitForCompletion: false))
+        /*
+        let soundAction = SKAction.playSoundFileNamed("music.wav", waitForCompletion: false)
         run(soundAction)
         */
+        //run(SKAction.playGameMusic)
         // привязываем переменную и элимент на GameScene
         player = childNode(withName: "player") // поиск узла по имени
         joystick = childNode(withName: "joystick")
@@ -98,6 +99,7 @@ class GameScene: SKScene {
         scoreLabel.text = String(score)
         cameraNode?.addChild(scoreLabel)
     }
+
 }
 
 // MARK: Touches
@@ -120,6 +122,7 @@ extension GameScene {
     // Touch Move
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let joystick = joystick else {return}
+        
         guard let joystickKnod = joystickKnod else {return}
         
         if !joystickAction {return} // если false то ничего не возвращаешь
@@ -235,7 +238,7 @@ extension GameScene {
         // Camera
         cameraNode?.position.x = player!.position.x
         joystick?.position.y = ((cameraNode?.position.y)!) - 100
-        joystick?.position.x = ((cameraNode?.position.x)!) - 300
+        joystick?.position.x = ((cameraNode?.position.x)!) - 260
         // Player movement
         guard let joystickKnod = joystickKnod else {return}
         let xPosition = Double(joystickKnod.position.x)

@@ -11,10 +11,10 @@ import SpriteKit
 class GameOverScrene: SKScene {
     
     override func sceneDidLoad() {
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: false) { timer in
+            self.removeAllActions()
             let level1 = GameScene(fileNamed: "Level1")
             self.view?.presentScene(level1)
-            self.removeAllActions()
             
         }
     }
