@@ -33,7 +33,7 @@ class Level1: GameScene {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
        // чтобы перейти на второй уровень нужно собрать определенное колличество кристалов
-        if score >= 7 {
+        if score >= 5 {
             let nextLevel = GameScene(fileNamed: "Level2")
             nextLevel?.scaleMode = .aspectFill
             view?.presentScene(nextLevel)
